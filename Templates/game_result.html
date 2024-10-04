@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>NFL Stats Project PPR</title>
+  <style type="text/css" media="screen">
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+    }
+    
+    main {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 800px;
+        width: 100%;
+    }
+    
+    /* Section heading */
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+        font-size: 28px;
+    }
+    
+    h2 {
+        margin-bottom: 10px;
+        color: #555;
+        font-size: 22px;
+    }
+    
+    /* Forms styling */
+    form {
+        margin-bottom: 30px;
+    }
+    
+    form input {
+        width: calc(100% - 22px);
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+    
+    form input[type="number"], form input[type="text"], form input[type="date"] {
+        width: calc(50% - 22px);
+        margin-right: 20px;
+    }
+    
+    form button {
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    
+    form button:hover {
+        background-color: #0056b3;
+    }
+    
+    /* Table Styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    
+    table, th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
+    
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        text-align: left;
+    }
+    
+    td {
+        text-align: left;
+    }
+    
+    table tr:hover {
+        background-color: #f1f1f1;
+    }
+    .button-link {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-link:hover {
+    background-color: #0056b3;
+}
+    
+        </style>
+</head>
+    
+<body>
+
+  <main>
+    <section>
+      <h1>Game Results</h1>
+    
+      {% if data_game['response'] %}
+          <table>
+              <thead>
+                  <tr>
+                      <th>Game ID</th>
+                      <th>Date</th>
+                      <th>Season</th>
+                      <th>Home Team</th>
+                      <th>Away Team</th>
+                      <th>Home Team Score</th>
+                      <th>Away Team Score</th>
+                      <th>Home Q1 Score</th>
+                      <th>Home Q2 Score</th>
+                      <th>Home Q3 Score</th>
+                      <th>HomeQ4 Score</th>
+                      <th>Away Q1 Score</th>
+                      <th>Away Q2 Score</th>
+                      <th>Away Q3 Score</th>
+                      <th>Away Q4 Score</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for game in data_game['response'] %}
+                       <!--Create jquery to calculate winner display-->
+                      <tr>
+                          <td>{{ game['game']['id'] }}</td>
+                          <td>{{ game['game']['date']['date'] }}</td>
+                          <td>{{ game['league']['season'] }}</td>
+                          <td>{{ game['teams']['home']['name'] }}</td>
+                          <td>{{ game['teams']['away']['name'] }}</td>
+                          <td>{{ game['scores']['home']['total'] }}</td>
+                          <td>{{ game['scores']['away']['total'] }}</td>
+                          <td>{{ game['scores']['home']['quarter_1'] }}</td>
+                          <td>{{ game['scores']['home']['quarter_2'] }}</td>
+                          <td>{{ game['scores']['home']['quarter_3'] }}</td>
+                          <td>{{ game['scores']['home']['quarter_4'] }}</td>
+                          <td>{{ game['scores']['away']['quarter_1'] }}</td>
+                          <td>{{ game['scores']['away']['quarter_2'] }}</td>
+                          <td>{{ game['scores']['away']['quarter_3'] }}</td>
+                          <td>{{ game['scores']['away']['quarter_4'] }}</td>
+                
+                      </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+      {% else %}
+          <p>No players found for your search.</p>
+      {% endif %}
+      
+      <a class="button-link" href="/">Go Back</a>
+    </section>
+
+        </main>
+
+        <footer >
+        </footer>
+    </body>
+</html>

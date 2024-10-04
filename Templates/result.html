@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>NFL Stats Project PPR</title>
+  <style type="text/css" media="screen">
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+    }
+    
+    main {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 800px;
+        width: 100%;
+    }
+    
+    /* Section heading */
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+        font-size: 28px;
+    }
+    
+    h2 {
+        margin-bottom: 10px;
+        color: #555;
+        font-size: 22px;
+    }
+    
+    /* Forms styling */
+    form {
+        margin-bottom: 30px;
+    }
+    
+    form input {
+        width: calc(100% - 22px);
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+    
+    form input[type="number"], form input[type="text"], form input[type="date"] {
+        width: calc(50% - 22px);
+        margin-right: 20px;
+    }
+    
+    form button {
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    
+    form button:hover {
+        background-color: #0056b3;
+    }
+    
+    /* Table Styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    
+    table, th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
+    
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        text-align: left;
+    }
+    
+    td {
+        text-align: left;
+    }
+    
+    table tr:hover {
+        background-color: #f1f1f1;
+    }
+    
+    .button-link {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-link:hover {
+    background-color: #0056b3;
+}
+
+    
+        </style>
+</head>
+    
+<body>
+
+  <main>
+    <section>
+      <h1>Player Search Results</h1>
+    
+      {% if data['response'] %}
+          <table>
+              <thead>
+                  <tr>
+                      <th>Player ID</th>
+                      <th>Player Name</th>
+                      <th>Position</th>
+                      <th>Height</th>
+                      <th>Weight</th>
+                      <th>Age</th>
+                      <th>College</th>
+                      <th>Number</th>
+                      <th>Experience</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for player in data['response'] %}
+                      <tr>
+                          <td>{{ player['id'] }}</td>
+                          <td>{{ player['name'] }}</td>
+                          <td>{{ player['position'] }}</td>
+                          <td>{{ player['height'] }}</td>
+                          <td>{{ player['weight'] }}</td>
+                          <td>{{ player['age'] }}</td>
+                          <td>{{ player['college'] }}</td>
+                          <td>{{ player['number'] }}</td>
+                          <td>{{ player['experience'] }}</td>
+                      </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+      {% else %}
+          <p>No players found for your search.</p>
+      {% endif %}
+      
+    <a class="button-link" href="/">Go Back</a>
+    </section>    
+        </main>
+
+        <footer >
+        </footer>
+    </body>
+</html>

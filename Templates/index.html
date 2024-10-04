@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>NFL Stats Project PPR</title>
+  <style type="text/css" media="screen">
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+main {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+}
+
+/* Section heading */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+h2 {
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 22px;
+}
+
+/* Forms styling */
+form {
+    margin-bottom: 30px;
+}
+
+form input {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+form input[type="number"], form input[type="text"], form input[type="date"] {
+    width: calc(50% - 22px);
+    margin-right: 20px;
+}
+
+form button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: left;
+}
+
+td {
+    text-align: left;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+
+    </style>
+</head>
+    
+<body>
+
+  <main>
+    <section>
+      <h1>NFL Stats Lookup</h1>
+      <form action="/request_players" methods="POST">
+        <h2 name="categories">Players</h2> 
+        <input type="number" placeholder="Player ID" name="player_id">
+        <input type="text" placeholder="Player Name" name="player_name">
+        <input type="number" placeholder="Season" name="season"> 
+        <input type="text" placeholder="Player Search" name="search">
+        <br>
+        <br>
+        <button type="submit">Submit</button>
+      </form>
+
+
+      <form action="/request_teams" methods="POST">
+        <h2 name="categories">Teams</h2> 
+        <input type="number" placeholder="Team ID" name="team_id">
+        <input type="text" placeholder="Team Name" name="team_name">
+        <br>
+        <br>
+        <button type="submit">Submit</button>
+      </form>
+
+
+      <form action="/request_games" methods="POST">
+        <h2 name="categories">Games</h2> 
+        <input type="number" placeholder="Game ID" name="game_id">
+        <input type="date" placeholder="Date of Game" name="date_of_game">
+        <input type="number" placeholder="Team ID" name="team_id">
+        <br>
+        <br>
+        <button type="submit">Submit</button>
+      </form>
+    </section> 
+        </main>
+
+        <footer >
+        </footer>
+
+  
+    </body>
+</html>
